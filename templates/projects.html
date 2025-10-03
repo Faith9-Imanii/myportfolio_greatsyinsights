@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}My Projects - My Portfolio{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>My Projects</h1>
+    <p>Here's what I've been working on for the past 2 months. </p>
+</section>
+
+<section class="projects">
+    <div class="container">
+        <div class="project-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <h3>{{ project[0] }}</h3>
+                <p>{{ project[1] }}</p>
+                <small>Technologies: {{ project[2] }}</small>
+                {% if project[3] %}  <!-- If project URL exists -->
+                <a href="{{ project[3] }}" target="_blank" class="project-link">View Project</a>
+                {% endif %}
+            </div>
+            {% else %}
+            <p>No projects yet. Check back soon!</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}Home - My Portfolio{% endblock %}
+
+{% block content %}
+<!-- Compact Hero Section -->
+<section class="hero minimal-hero">
+    <div class="hero-content">
+        <h1>Faith Imanii Shiku</h1>
+        <p class="hero-subtitle">Python Developer,Web Administrator & Creative Problem Solver</p>
+        <div class="hero-decoration">
+            <div class="deco-circle"></div>
+            <div class="deco-square"></div>
+            <div class="deco-diamond"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Introduction Section -->
+<section class="intro-section">
+    <div class="container">
+        <div class="intro-content">
+            <h2>Welcome to My Digital Space</h2>
+            <p>
+                I'm a passionate Python developer specializing in creating beautiful, 
+                functional web applications. With expertise in Flask, MySQL, and modern 
+                web technologies, I transform ideas into digital reality.
+            </p>
+            <div class="intro-stats">
+                <div class="stat">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Passion for Learning</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section">
+    <div class="container">
+        <h2>What I Do</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Web Development</h3>
+                <p>Building responsive and dynamic websites using modern technologies</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🐍</div>
+                <h3>Python Programming</h3>
+                <p>Creating efficient backend systems and applications with Python</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛠️</div>
+                <h3>Problem Solving</h3>
+                <p>Finding creative solutions to complex technical challenges</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="projects" id="projects">
+    <div class="container">
+        <h2>Featured Projects</h2>
+        <p class="section-subtitle">A glimpse of my recent work and creations</p>
+        
+        <div class="project-grid">
+            {% for project in projects %}
+            <div class="project-card">
+                <h3>{{ project[0] }}</h3>
+                <p>{{ project[1] }}</p>
+                <small>Technologies: {{ project[2] }}</small>
+                {% if project[3] %}
+                <a href="{{ project[3] }}" target="_blank" class="project-link">View Project →</a>
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="no-projects">
+                <p>✨ Working on amazing projects! Check back soon...</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="view-all">
+            <a href="{{ url_for('projects') }}" class="btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Bring Your Ideas to Life?</h2>
+        <p>Let's collaborate on your next project and create something amazing together</p>
+        <div class="cta-buttons">
+            <a href="{{ url_for('contact') }}" class="btn-primary">Get In Touch</a>
+            <a href="{{ url_for('projects') }}" class="btn-secondary">See My Work</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

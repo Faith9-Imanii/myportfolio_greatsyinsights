@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Me - My Portfolio{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Get In Touch</h1>
+    <p>Let's create something amazing together</p>
+</section>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-header">
+            <h2>I'd Love to Hear From You</h2>
+            <p>Whether you have a project in mind, want to collaborate, or just want to say hello, I'm always excited to connect with fellow developers and potential clients.</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Contact Information -->
+            <div class="contact-info-card">
+                <h3>📧 Contact Information</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+254 115 684 556</p>
+                            <small>Available on WhatsApp</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>faimanishiku@gmail.com</p>
+                            <small>Response within 24 hours</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Nairobi, Kenya</p>
+                            <small>Available for remote work worldwide</small>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Monday - Friday</p>
+                            <small>9:00 AM - 6:00 PM EAT</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <h4>Follow Me</h4>
+                    <div class="social-icons">
+                        <a href="#" class="social-link">📘 Facebook</a>
+                        <a href="#" class="social-link">🐦 Twitter</a>
+                        <a href="#" class="social-link">📸 Instagram</a>
+                        <a href="#" class="social-link">💼 LinkedIn</a>
+                        <a href="#" class="social-link">🐙 GitHub</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-card">
+                <h3>💬 Send Me a Message</h3>
+                <form class="contact-form" action="/submit-form" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="project">Project Inquiry</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="freelance">Freelance Work</option>
+                            <option value="advice">Technical Advice</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Project Budget (Optional)</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select budget range</option>
+                            <option value="under-500">Under $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000-5000">$1,000 - $5,000</option>
+                            <option value="5000+">$5,000+</option>
+                            <option value="discuss">Let's Discuss</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or inquiry..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        📤 Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h3>❓ Frequently Asked Questions</h3>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>How long does it take to get a response?</h4>
+                    <p>I typically respond to all inquiries within 24 hours during weekdays.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do you work remotely?</h4>
+                    <p>Yes! I'm available for remote work and can collaborate with clients worldwide.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What technologies do you work with?</h4>
+                    <p>Python, Flask, MySQL, HTML/CSS, JavaScript, and various web technologies.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do you take on small projects?</h4>
+                    <p>Absolutely! I enjoy projects of all sizes, from small fixes to large applications.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

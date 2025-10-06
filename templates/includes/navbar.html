@@ -1,8 +1,11 @@
 <nav>
     <div class="container">
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="{{ url_for('about') }}">About</a>  <!-- Changed to separate page -->
-        <a href="{{ url_for('projects') }}">Projects</a>  <!-- Changed to separate page -->
-        <a href="{{ url_for('contact') }}">Contact</a>  <!-- Changed to separate page -->
+        <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        <div class="nav-links" id="navLinks">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('projects') }}">Projects</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
     </div>
 </nav>

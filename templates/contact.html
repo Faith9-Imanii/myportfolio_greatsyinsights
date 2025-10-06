@@ -10,6 +10,19 @@
 
 <section class="contact-section">
     <div class="container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
         <div class="contact-header">
             <h2>I'd Love to Hear From You</h2>
             <p>Whether you have a project in mind, want to collaborate, or just want to say hello, I'm always excited to connect with fellow developers and potential clients.</p>
@@ -72,26 +85,30 @@
             <!-- Contact Form -->
             <div class="contact-form-card">
                 <h3>💬 Send Me a Message</h3>
-                <form class="contact-form" action="/submit-form" method="POST">
+                <form class="contact-form" action="{{ url_for('contact') }}" method="POST">
                     <div class="form-group">
                         <label for="name">Your Name *</label>
-                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        <input type="text" id="name" name="name" required 
+                               placeholder="Enter your full name"
+                               value="{{ form_data.name if form_data else '' }}">
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        <input type="email" id="email" name="email" required 
+                               placeholder="your.email@example.com"
+                               value="{{ form_data.email if form_data else '' }}">
                     </div>
 
                     <div class="form-group">
                         <label for="subject">Subject *</label>
                         <select id="subject" name="subject" required>
                             <option value="">Select a subject</option>
-                            <option value="project">Project Inquiry</option>
-                            <option value="collaboration">Collaboration</option>
-                            <option value="freelance">Freelance Work</option>
-                            <option value="advice">Technical Advice</option>
-                            <option value="other">Other</option>
+                            <option value="project" {% if form_data and form_data.subject == 'project' %}selected{% endif %}>Project Inquiry</option>
+                            <option value="collaboration" {% if form_data and form_data.subject == 'collaboration' %}selected{% endif %}>Collaboration</option>
+                            <option value="freelance" {% if form_data and form_data.subject == 'freelance' %}selected{% endif %}>Freelance Work</option>
+                            <option value="advice" {% if form_data and form_data.subject == 'advice' %}selected{% endif %}>Technical Advice</option>
+                            <option value="other" {% if form_data and form_data.subject == 'other' %}selected{% endif %}>Other</option>
                         </select>
                     </div>
 
@@ -99,17 +116,18 @@
                         <label for="budget">Project Budget (Optional)</label>
                         <select id="budget" name="budget">
                             <option value="">Select budget range</option>
-                            <option value="under-500">Under $500</option>
-                            <option value="500-1000">$500 - $1,000</option>
-                            <option value="1000-5000">$1,000 - $5,000</option>
-                            <option value="5000+">$5,000+</option>
-                            <option value="discuss">Let's Discuss</option>
+                            <option value="under-500" {% if form_data and form_data.budget == 'under-500' %}selected{% endif %}>Under $500</option>
+                            <option value="500-1000" {% if form_data and form_data.budget == '500-1000' %}selected{% endif %}>$500 - $1,000</option>
+                            <option value="1000-5000" {% if form_data and form_data.budget == '1000-5000' %}selected{% endif %}>$1,000 - $5,000</option>
+                            <option value="5000+" {% if form_data and form_data.budget == '5000+' %}selected{% endif %}>$5,000+</option>
+                            <option value="discuss" {% if form_data and form_data.budget == 'discuss' %}selected{% endif %}>Let's Discuss</option>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="message">Your Message *</label>
-                        <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project or inquiry..."></textarea>
+                        <textarea id="message" name="message" rows="5" required 
+                                  placeholder="Tell me about your project or inquiry...">{% if form_data %}{{ form_data.message }}{% endif %}</textarea>
                     </div>
 
                     <button type="submit" class="btn-primary">

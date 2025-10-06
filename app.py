@@ -195,34 +195,4 @@ def contact():
 if __name__ == '__main__':
     app.run(debug=True)
 
-    def update_projects_table():
-    """Add image column to projects table if it doesn't exist"""
-    try:
-        conn = get_db_connection()
-        if conn:
-            cur = conn.cursor()
-            
-            # Check if image column exists
-            cur.execute("""
-                SELECT COLUMN_NAME 
-                FROM INFORMATION_SCHEMA.COLUMNS 
-                WHERE TABLE_SCHEMA = 'Imanii195$greatsy' 
-                AND TABLE_NAME = 'projects' 
-                AND COLUMN_NAME = 'image_url'
-            """)
-            
-            if not cur.fetchone():
-                # Add image_url column
-                cur.execute("ALTER TABLE projects ADD COLUMN image_url VARCHAR(500) AFTER description")
-                conn.commit()
-                print("✅ Added image_url column to projects table")
-            else:
-                print("✅ image_url column already exists")
-                
-            cur.close()
-            conn.close()
-    except Exception as e:
-        print(f"Error updating projects table: {e}")
-
-# Call this function in your app
-update_projects_table()
+    
